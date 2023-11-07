@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        tools:context=".MainActivity"
+        android:background="@drawable/pg1"
+        android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/playfair_display"
+        android:text="Mesure de niveau de glycémie"
+        android:gravity="center"
+        android:padding="30dp"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvAge"
+        android:fontFamily="@font/playfair_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="votre age :"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:padding="30dp"
+        />
+
+    <SeekBar
+        android:id="@+id/sbAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:max="120"
+        android:progress="20" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/playfair_display"
+        android:padding="30dp"
+        android:text="Est-ce que vous jeunez ? :"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        >
+
+        <RadioButton
+            android:id="@+id/rbtOui"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:buttonTint="#F44336"
+            android:checked="true"
+            android:text="Oui"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            />
+    <!-- (TODO) RadioButton “rbtNon” à compléter -->
+        <RadioButton
+            android:id="@+id/rbtNon"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:buttonTint="#F44336"
+            android:checked="false"
+            android:text="Non"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            />
+    </RadioGroup>
+    <EditText
+        android:id="@+id/edtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="25sp"
+        android:hint="Entrez la valeur en mmol/l"
+        android:inputType="numberDecimal"
+        />
+
+    <Button
+        android:id="@+id/btnConsulter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#F44336"
+
+        android:text="CONSULTER"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/playfair_display"
+        android:padding="30dp"
+        android:textAlignment="center"
+        android:text="..."
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+
+
+</LinearLayout>
