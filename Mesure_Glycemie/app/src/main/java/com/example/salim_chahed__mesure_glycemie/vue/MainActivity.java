@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.salim_chahed__mesure_glycemie.R;
+import com.example.salim_chahed__mesure_glycemie.controller.Controller;
 
 public class MainActivity extends AppCompatActivity {
     private EditText edtext;
@@ -31,52 +32,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String valeurMesuree = edtext.getText().toString();
-                double val = Double.parseDouble(valeurMesuree);
                 int age = sbAge.getProgress();
                 boolean jeune = rbtOui.isChecked();
+                Controller cn = Controller.getInstance();
+
+                cn.createPatient(age,valeurMesuree,jeune);
                 //jai un prop dans le toast
-                if (age == 0 && valeurMesuree.isEmpty()) {
+                if (cn.patient.age == 0 && cn.patient.val.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "age et valeur mesure invalide", Toast.LENGTH_SHORT).show();
-                } else if (age == 0) {
+                } else if (cn.patient.age == 0) {
                     Toast.makeText(getApplicationContext(), "age null", Toast.LENGTH_SHORT).show();
-                } else if (valeurMesuree.isEmpty()) {
+                } else if (cn.patient.val.isEmpty()) {
                     Toast.makeText(getApplicationContext(), " valeur mesure invalide", Toast.LENGTH_SHORT).show();
-                } else
-                if (jeune) {
-                    if (age < 6 && age != 0) {
-                        if (val >= 5.5 && val <= 10.0) {
-                            tvMessage.setText("niv de glycemi est normal");
-                        } else if (val < 5.5){
-                            tvMessage.setText("niv de glycemi est trop bas");
-                        }else
-                        {
-                            tvMessage.setText("niv de glycemi est trop eleve");
-                        }
-                    } else if (age >= 6 && age < 12) {
-                        if (val >= 5.0 && val <= 10.0) {
-                            tvMessage.setText("niv de glycemi est normal");
-                        } else if (val < 5.0){
-                            tvMessage.setText("niv de glycemi est trop bas ");
-                        }else{
-                            tvMessage.setText("niv de glycemi est trop eleve");
-                        }
-                    } else if (age >= 12) {
-                        if (val >= 5.0 && val <= 7.2) {
-                            tvMessage.setText("niv de glycemi est normal");
-                        } else if (val < 5.0){
-                            tvMessage.setText("niv de glycemi est trop bas");
-                        }
-                        else {
-                            tvMessage.setText("niv de glycemi est trop eleve");
-                        }
-                    }
-                } else {
-                    if (val < 10.5) {
-                        tvMessage.setText("niv de glycemi est normal");
-                    } else {
-                        tvMessage.setText("niv de glycemi est trop eleve");
-                    }
+                } else{
+                    cn.patient.calcule();
+                    tvMessage.setText(cn.patient.getRes());
                 }
+
                 edtext.setText("");
                 sbAge.setProgress(0);
                 rbtOui.setChecked(false);

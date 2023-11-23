@@ -1,9 +1,9 @@
 package com.example.salim_chahed__mesure_glycemie.model;
 
 public class Patient {
-    int age;
-    double val;
-    boolean jeunz;
+    public int age;
+    public String val;
+    public boolean jeune;
     String res;
 
     public String getRes() {
@@ -11,8 +11,8 @@ public class Patient {
     }
 
 
-    public Patient(int age,double val,boolean jeunz){
-        this.jeunz=jeunz;
+    public Patient(int age,String val,boolean jeune){
+        this.jeune=jeune;
         this.val=val;
         this.age=age;
         calcule();
@@ -22,7 +22,9 @@ public class Patient {
     }
 
     public void calcule(){
-        if (jeunz) {
+        double val = Double.parseDouble(this.val);
+
+        if (jeune) {
             if (age < 6 && age != 0) {
                 if (val >= 5.5 && val <= 10.0) {
                     res=("niv de glycemi est normal");
